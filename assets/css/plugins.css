@@ -1,0 +1,56 @@
+/* PriyangshuX8 Workspace - Plugin Manager styles. */
+
+.plg { display: flex; flex-direction: column; height: 100%; margin: -16px; }
+.plg__toolbar {
+  display: flex; align-items: center; gap: 8px; padding: 10px; flex-wrap: wrap;
+  border-bottom: 1px solid var(--stroke); background: var(--glass-2);
+}
+.plg__btn {
+  height: 32px; padding: 0 14px; border: 1px solid var(--stroke); border-radius: 9px;
+  background: var(--glass); color: var(--text); font-size: 12px;
+}
+.plg__btn:hover { background: var(--glass-2); }
+.plg__btn--primary { background: var(--accent); color: #fff; border-color: transparent; }
+.plg__spacer { flex: 1; }
+.plg__input {
+  flex: 2; min-width: 160px; height: 32px; padding: 0 10px;
+  border: 1px solid var(--stroke); border-radius: 9px; background: var(--glass); color: var(--text); font-size: 12px;
+}
+.plg__input:focus { outline: none; border-color: var(--accent); }
+.plg__hint { padding: 8px 12px; font-size: 11px; color: var(--text-dim); border-bottom: 1px solid var(--stroke); }
+.plg__hint code { background: var(--glass-2); padding: 1px 5px; border-radius: 5px; }
+.plg__list { flex: 1; overflow: auto; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+.plg__empty { padding: 30px; text-align: center; color: var(--text-dim); font-size: 13px; }
+.plg__card {
+  display: flex; align-items: center; gap: 12px; padding: 12px 14px;
+  border: 1px solid var(--stroke); border-radius: 12px; background: var(--glass);
+}
+.plg__card--active { border-color: var(--accent); }
+.plg__card-main { flex: 1; min-width: 0; }
+.plg__card-name { font-size: 14px; font-weight: 600; }
+.plg__ver { font-size: 11px; color: var(--text-dim); font-weight: 400; }
+.plg__card-desc { font-size: 12px; color: var(--text-dim); margin-top: 3px; }
+.plg__card-err { font-size: 11px; color: #ff8a8a; margin-top: 4px; }
+.plg__card-author { font-size: 10px; color: var(--text-dim); opacity: 0.7; margin-top: 4px; }
+.plg__card-actions { display: flex; align-items: center; gap: 10px; }
+.plg__mini {
+  height: 28px; padding: 0 10px; border: 1px solid var(--stroke); border-radius: 7px;
+  background: var(--glass-2); color: var(--text); font-size: 11px;
+}
+.plg__mini--danger:hover { background: #e5484d; color: #fff; border-color: transparent; }
+.plg__status { padding: 8px 12px; border-top: 1px solid var(--stroke); background: var(--glass-2); font-size: 11px; color: var(--text-dim); min-height: 16px; }
+.plg__status--err { color: #ff8a8a; }
+
+/* Toggle switch. */
+.plg__switch { position: relative; display: inline-block; width: 42px; height: 24px; }
+.plg__switch input { opacity: 0; width: 0; height: 0; }
+.plg__slider {
+  position: absolute; inset: 0; border-radius: 24px; background: var(--glass-2);
+  border: 1px solid var(--stroke); transition: background 0.18s; cursor: pointer;
+}
+.plg__slider::before {
+  content: ''; position: absolute; width: 18px; height: 18px; left: 2px; top: 2px;
+  border-radius: 50%; background: var(--text-dim); transition: transform 0.18s;
+}
+.plg__switch input:checked + .plg__slider { background: var(--accent); }
+.plg__switch input:checked + .plg__slider::before { transform: translateX(18px); background: #fff; }

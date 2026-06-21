@@ -1,0 +1,46 @@
+/* PriyangshuX8 Workspace - AI Assistant styles. */
+
+.ai { display: flex; flex-direction: column; height: 100%; margin: -16px; }
+
+.ai__bar {
+  display: flex; align-items: center; gap: 8px; padding: 8px 10px;
+  border-bottom: 1px solid var(--stroke); background: var(--glass-2);
+}
+.ai__provider {
+  height: 30px; padding: 0 10px; border: 1px solid var(--stroke); border-radius: 9px;
+  background: var(--glass); color: var(--text); font-size: 12px; max-width: 60%;
+}
+.ai__provider:focus { outline: none; border-color: var(--accent); }
+.ai__spacer { flex: 1; }
+.ai__badge { font-size: 10px; padding: 3px 9px; border-radius: 20px; background: #2ea043; color: #fff; font-weight: 600; }
+.ai__badge--custom { background: var(--accent); }
+.ai__btn { height: 30px; padding: 0 12px; border: 1px solid var(--stroke); border-radius: 9px; background: var(--glass); color: var(--text); font-size: 12px; }
+.ai__btn:hover { background: var(--glass-2); }
+
+.ai__messages { flex: 1; overflow: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.ai__msg { display: flex; }
+.ai__msg--user { justify-content: flex-end; }
+.ai__msg--assistant { justify-content: flex-start; }
+.ai__bubble {
+  max-width: 80%; padding: 10px 14px; border-radius: 14px; font-size: 13px; line-height: 1.5;
+  border: 1px solid var(--stroke); background: var(--glass);
+}
+.ai__msg--user .ai__bubble { background: var(--accent); color: #fff; border-color: transparent; border-bottom-right-radius: 4px; }
+.ai__msg--assistant .ai__bubble { background: var(--glass-2); border-bottom-left-radius: 4px; }
+.ai__bubble--typing { color: var(--text-dim); letter-spacing: 2px; animation: ai-blink 1s steps(3) infinite; }
+@keyframes ai-blink { 50% { opacity: 0.4; } }
+
+.ai__composer {
+  display: flex; align-items: flex-end; gap: 8px; padding: 10px;
+  border-top: 1px solid var(--stroke); background: var(--glass-2);
+}
+.ai__input {
+  flex: 1; resize: none; max-height: 120px; padding: 10px 12px; border: 1px solid var(--stroke);
+  border-radius: 12px; background: var(--glass); color: var(--text); font-family: inherit; font-size: 13px; line-height: 1.4;
+}
+.ai__input:focus { outline: none; border-color: var(--accent); }
+.ai__send {
+  height: 40px; padding: 0 18px; border: none; border-radius: 12px;
+  background: var(--accent); color: #fff; font-size: 13px; font-weight: 600;
+}
+.ai__send:hover { filter: brightness(1.08); }

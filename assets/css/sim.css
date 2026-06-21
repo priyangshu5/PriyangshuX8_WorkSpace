@@ -1,0 +1,31 @@
+/* PriyangshuX8 Workspace - Simulation controls + Serial Monitor styles. */
+
+.lab__sim {
+  display: flex; align-items: center; gap: 6px; padding-left: 6px;
+  border-left: 1px solid var(--stroke); margin-left: 2px;
+}
+.lab__btn--run { background: #2ea043; color: #fff; border-color: transparent; }
+.lab__btn--run:hover { background: #2ea043; filter: brightness(1.1); }
+.lab__btn--stop { background: #e5484d; color: #fff; border-color: transparent; }
+.lab__sim-state { font-size: 11px; color: var(--text-dim); min-width: 56px; text-align: center; }
+.lab__sim-state--on { color: #6fe0a8; font-weight: 600; }
+
+/* Serial Monitor panel (docked at the bottom of the Lab canvas area). */
+.serial {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 160px; display: flex; flex-direction: column;
+  background: rgba(0,0,0,0.72); border-top: 1px solid var(--stroke);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.serial__bar {
+  display: flex; align-items: center; gap: 8px; padding: 6px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1); color: #d6e2ff; font-size: 12px;
+}
+.serial__title { font-weight: 600; }
+.serial__spacer { flex: 1; }
+.serial__btn { height: 24px; padding: 0 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 7px; background: transparent; color: #d6e2ff; font-size: 11px; }
+.serial__btn:hover { background: rgba(255,255,255,0.1); }
+.serial__out {
+  flex: 1; overflow: auto; padding: 8px 10px; white-space: pre-wrap; word-break: break-word;
+  color: #b9f6c8; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 12px; line-height: 1.45;
+}
+.serial__err { color: #ff9a9a; }
