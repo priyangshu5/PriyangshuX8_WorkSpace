@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="description" content="PriyangshuX8 Workspace - a browser-based virtual maker platform." />
+  <title>PriyangshuX8 Workspace</title>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" href="./icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <link rel="stylesheet" href="./assets/css/apps.css" />
+  <link rel="stylesheet" href="./assets/css/code-studio.css" />
+  <link rel="stylesheet" href="./assets/css/lab.css" />
+  <link rel="stylesheet" href="./assets/css/sim.css" />
+  <link rel="stylesheet" href="./assets/css/studio3d.css" />
+  <link rel="stylesheet" href="./assets/css/projects.css" />
+  <link rel="stylesheet" href="./assets/css/plugins.css" />
+  <link rel="stylesheet" href="./assets/css/assistant.css" />
+</head>
+<body>
+  <div id="boot" class="boot">
+    <div class="boot__logo">PX8</div>
+    <div class="boot__text">PriyangshuX8 Workspace</div>
+    <div class="boot__bar"><span></span></div>
+  </div>
+
+  <div id="px8-root" class="px8-root" hidden></div>
+
+  <script type="module">
+    import { kernel } from './js/core/kernel.js';
+    import { ThemeEngine } from './js/ui/theme.js';
+    import { Desktop } from './js/desktop/desktop.js';
+
+    async function main() {
+      const root = document.getElementById('px8-root');
+      await kernel.boot();
+
+      const theme = new ThemeEngine(kernel);
+      await theme.init();
+      kernel.services.register('theme', theme);
+
+      const desktop = new Desktop(kernel, root);
+      await desktop.init();
+      kernel.services.register('desktop', desktop);
+
+      // Reveal UI, hide boot splash.
+      const boot = document.getElementById('boot');
+      root.hidden = false;
+      requestAnimationFrame(() => {
+        boot.classList.add('boot--done');
+        setTimeout(() => boot.remove(), 450);
+      });
+    }
+
+    main().catch((err) => {
+      console.error('[PX8] Fatal boot error:', err);
+      document.getElementById('boot').innerHTML =
+        '<div class="boot__text">Failed to start. See console.</div>';
+    });
+
+    // Register the service worker for offline/PWA support.
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js').catch((e) =>
+          console.warn('[PX8] SW registration failed:', e)
+        );
+      });
+    }
+  </script>
+</body>
+</html>
